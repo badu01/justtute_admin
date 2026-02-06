@@ -90,10 +90,11 @@ const Layout = () => {
               </svg>
             </button> */}
             <div className="flex items-center">
-              <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
+              {/* <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
                 <span className="text-white font-bold text-sm">JT</span>
-              </div>
-              <span className={`ml-3 font-semibold text-gray-900 ${sidebarCollapsed ? 'hidden' : 'hidden md:inline'}`}>
+              </div> */}
+              <img src="/JT_logo.png" alt="JustTute Logo" className="w-7 h-7" />
+              <span className={`ml-1.5 font-semibold text-gray-900 ${sidebarCollapsed ? 'hidden' : 'hidden md:inline'}`}>
                 JustTute Admin
               </span>
             </div>

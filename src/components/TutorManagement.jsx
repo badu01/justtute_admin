@@ -58,7 +58,7 @@ const TutorManagement = ({ tutors, onUpdateTutor }) => {
           <div className="relative">
             <input
               type="text"
-              placeholder="Search tutors..."
+              placeholder="Search tutors by name, email, or subject..."
               className="pl-10 pr-4 py-2 rounded-lg w-md bg-gray-400/20 border border-gray-400/30 bg-opacity-20 placeholder-gray-500/50 focus:outline-none focus:ring-2 focus:ring-blue-500"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
