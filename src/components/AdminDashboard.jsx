@@ -14,10 +14,11 @@ import {
   payments as initialPayments,
   monthlyReports as initialMonthlyReports
 } from '../data/dummyData';
-import Snowfall from 'react-snowfall';
 import LoadingPage from './LoadingPage';
 import AddStudentModal from './AddStudentModal';
 import { useNavigate } from 'react-router-dom';
+import StatCard from './StatCard'
+import StatusCard from './StatusCard';
 
 const AdminDashboard = () => {
   const [allStudents, setAllStudents] = useState([]);
@@ -240,7 +241,7 @@ const AdminDashboard = () => {
       console.log(response);
     } catch (error) {
       console.log(error);
-      
+
     }
   };
 
@@ -374,25 +375,31 @@ const AdminDashboard = () => {
 
   return (
     <>
-      <Snowfall />
       <div className="min-h-screen bg-gray-100 font-BarlowCondensed">
-        <header className=" text-black">
-          <div className=" mx-auto px-4 py-4">
-            <div className="flex flex-col md:flex-row justify-between items-center">
-              <div className='px-3 py-1 rounded-4xl'>
-                <h1 className="text-3xl font-bold">
-                  JustTute
+        <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200/60">
+          <div className="mx-auto px-9 py-6">
+            <div className="flex justify-between items-center">
+              <div className="flex items-center gap-2">
+                <div className="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center shadow-indigo-200 shadow-lg">
+                  <span className="text-white font-bold text-lg">J</span>
+                </div>
+                <h1 className="text-xl font-bold tracking-tight text-gray-900">
+                  JustTute<span className="text-indigo-600">.</span>
                 </h1>
               </div>
-              <div className="md:mt-0">
-                <div className="flex space-x-2">
-                  <div className="bg-white bg-opacity-20 rounded-4xl border border-gray-500/50 px-4 flex items-center space-x-3">
-                    <p className="text-sm font-semibol">Admin User</p>
+
+              <div className="flex items-center gap-4">
+                <div className="h-8 w-[1px] bg-gray-200 mx-2" /> {/* Divider */}
+                <div className="flex items-center gap-3">
+                  <div className="text-right hidden sm:block">
+                    <p className="text-sm font-semibold text-gray-900 leading-none">Admin User</p>
+                    <p className="text-[11px] font-medium text-gray-400 uppercase tracking-widest mt-1">Platform Manager</p>
                   </div>
-                  <button 
-                  onClick={()=>handleLogout()}
-                  className="px-4 py-2 bg-white text-blue-700 rounded-4xl border border-gray-500/50 hover:bg-blue-50 transition-colors font-medium">
-                    Logout
+                  <button
+                    onClick={() => handleLogout()}
+                    className="px-4 py-2 text-sm font-semibold text-gray-700 bg-white border border-gray-200 rounded-full hover:bg-gray-50 hover:border-gray-300 transition-all shadow-sm active:scale-95"
+                  >
+                    Log out
                   </button>
                 </div>
               </div>
@@ -402,67 +409,45 @@ const AdminDashboard = () => {
 
         <main className="sm:px-6 lg:px-8">
           {/* Stats Cards */}
-          <div className="flex  border-b border-gray-500/50 pt-5 pb-8">
-            {/* Left Section */}
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
             <div>
-              <h1 className="text-2xl font-semibold text-gray-800">
-                Welcome to Justtute Admin Dashboard
-              </h1>
+              <h2 className="text-3xl font-extrabold text-gray-900 tracking-tight">Overview</h2>
+              <p className="text-gray-500 mt-1 font-medium">Monitoring platform activity and assignment health.</p>
             </div>
+            <div className="flex gap-2">
+              <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-indigo-50 text-indigo-700 border border-indigo-100">
+                Real-time updates active
+              </span>
+            </div>
+          </div>
 
-            {/* Right Section */}
-            <div className="ml-auto">
-              <div className="grid grid-cols-3 gap-x-20 gap-y-6">
-                <div className=''>
-                  <h2 className="text-5xl font-bold text-gray-800">
-                    {stats.total}
-                  </h2>
-                  <p className="text-sm font-medium text-gray-700">
-                    Students
-                  </p>
-                </div>
-                <div >
-                  <h2 className="text-5xl font-bold text-gray-800">
-                    {stats.totalTutors}
-                  </h2>
-                  <p className="text-sm font-medium text-gray-700">
-                    Tutors
-                  </p>
-                </div>
-                <div  >
-                  <h2 className="text-5xl font-bold text-gray-800">
-                    {stats.availableSubjects}
-                  </h2>
-                  <p className="text-sm font-medium text-gray-700">
-                    Subjects
-                  </p>
-                </div>
-                <div  >
-                  <h2 className="text-5xl font-bold text-green-500">
-                    {stats.fullyAssigned}
-                  </h2>
-                  <p className="text-sm font-medium text-gray-700">
-                    Fully Assigned
-                  </p>
-                </div>
-                <div  >
-                  <h2 className="text-5xl font-bold text-yellow-500">
-                    {stats.partiallyAssigned}
-                  </h2>
-                  <p className="text-sm font-medium text-gray-700">
-                    Partial
-                  </p>
-                </div>
-                <div  >
-                  <h2 className="text-5xl font-bold text-red-500">
-                    {stats.unassigned}
-                  </h2>
-                  <p className="text-sm font-medium text-gray-700">
-                    Unassigned
-                  </p>
-                </div>
-              </div>
-            </div>
+          {/* Primary Stats Row */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+            <StatCard label="Total Students" value={stats.total} icon="👤" />
+            <StatCard label="Active Tutors" value={stats.totalTutors} icon="🎓" />
+            <StatCard label="Subjects" value={stats.availableSubjects} icon="📚" />
+          </div>
+
+          {/* Status Cards - More interactive and visual */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <StatusCard
+              label="Fully Assigned"
+              value={stats.fullyAssigned}
+              color="emerald"
+              percentage={(stats.fullyAssigned / stats.total * 100).toFixed(0)}
+            />
+            <StatusCard
+              label="Pending Partial"
+              value={stats.partiallyAssigned}
+              color="amber"
+              percentage={(stats.partiallyAssigned / stats.total * 100).toFixed(0)}
+            />
+            <StatusCard
+              label="Unassigned"
+              value={stats.unassigned}
+              color="rose"
+              percentage={(stats.unassigned / stats.total * 100).toFixed(0)}
+            />
           </div>
 
 

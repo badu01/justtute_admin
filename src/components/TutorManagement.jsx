@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { subjects } from '../data/dummyData';
+import { useNavigate } from 'react-router-dom';
 
 const TutorManagement = ({ tutors, onUpdateTutor }) => {
   const [editingTutor, setEditingTutor] = useState(null);
   const [selectedSubjects, setSelectedSubjects] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
+  const navigate = useNavigate();
 
   const handleEditClick = (tutor) => {
     setEditingTutor(tutor);
@@ -39,7 +41,7 @@ const TutorManagement = ({ tutors, onUpdateTutor }) => {
   const filteredTutors = tutors.filter(tutor =>
     tutor.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
     tutor.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    tutor.subjects.some(subject => 
+    tutor.subjects.some(subject =>
       subject.toLowerCase().includes(searchTerm.toLowerCase())
     )
   );
@@ -79,11 +81,10 @@ const TutorManagement = ({ tutors, onUpdateTutor }) => {
                   <p className="text-sm text-gray-600">{tutor.email}</p>
                   <p className="text-xs text-gray-500 mt-1">{tutor.experience} experience</p>
                 </div>
-                <span className={`px-3 py-1 rounded-full text-xs font-semibold ${
-                  tutor.availability === 'Full-time' 
+                <span className={`px-3 py-1 rounded-full text-xs font-semibold ${tutor.availability === 'Full-time'
                     ? 'bg-green-100 text-green-800'
                     : 'bg-yellow-100 text-yellow-800'
-                }`}>
+                  }`}>
                   {tutor.availability}
                 </span>
               </div>
@@ -114,10 +115,10 @@ const TutorManagement = ({ tutors, onUpdateTutor }) => {
                   <span className="ml-2 text-sm text-gray-600">| ₹{tutor.hourlyRate}/hr</span>
                 </div>
                 <button
-                  onClick={() => handleEditClick(tutor)}
+                  onClick={() => navigate(`/admin/tutors/${tutor._id || tutor.id}`)}
                   className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-sm font-medium"
                 >
-                  Edit Subjects
+                  View Details
                 </button>
               </div>
             </div>
@@ -149,28 +150,25 @@ const TutorManagement = ({ tutors, onUpdateTutor }) => {
                   {subjects.map((subject) => (
                     <div
                       key={subject}
-                      className={`p-3 rounded-lg border-2 cursor-pointer transition-all duration-200 ${
-                        selectedSubjects.includes(subject)
+                      className={`p-3 rounded-lg border-2 cursor-pointer transition-all duration-200 ${selectedSubjects.includes(subject)
                           ? 'border-blue-500 bg-blue-50'
                           : 'border-gray-200 hover:border-blue-300'
-                      }`}
+                        }`}
                       onClick={() => handleSubjectToggle(subject)}
                     >
                       <div className="flex items-center">
-                        <div className={`w-5 h-5 rounded-full border flex items-center justify-center mr-3 ${
-                          selectedSubjects.includes(subject)
+                        <div className={`w-5 h-5 rounded-full border flex items-center justify-center mr-3 ${selectedSubjects.includes(subject)
                             ? 'bg-blue-500 border-blue-500'
                             : 'border-gray-300'
-                        }`}>
+                          }`}>
                           {selectedSubjects.includes(subject) && (
                             <svg className="w-3 h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
                             </svg>
                           )}
                         </div>
-                        <span className={`font-medium ${
-                          selectedSubjects.includes(subject) ? 'text-blue-700' : 'text-gray-700'
-                        }`}>
+                        <span className={`font-medium ${selectedSubjects.includes(subject) ? 'text-blue-700' : 'text-gray-700'
+                          }`}>
                           {subject}
                         </span>
                       </div>
@@ -203,11 +201,10 @@ const TutorManagement = ({ tutors, onUpdateTutor }) => {
                 <button
                   onClick={handleSave}
                   disabled={selectedSubjects.length === 0}
-                  className={`px-5 py-2.5 rounded-lg font-medium transition-colors ${
-                    selectedSubjects.length === 0
+                  className={`px-5 py-2.5 rounded-lg font-medium transition-colors ${selectedSubjects.length === 0
                       ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
                       : 'bg-blue-600 text-white hover:bg-blue-700'
-                  }`}
+                    }`}
                 >
                   Save Changes
                 </button>
