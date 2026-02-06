@@ -66,12 +66,7 @@ const TutorManagementPage = () => {
   if (error) return <div className="p-6 text-red-600">{error}</div>;
 
   return (
-    <div className="p-6">
-      <div className="mb-6">
-        <h2 className="text-2xl font-semibold text-gray-900">Tutor Management</h2>
-        <p className="text-gray-600 mt-1">Manage tutor profiles and subject assignments</p>
-      </div>
-      
+    <div className="">
       <TutorManagement 
         tutors={tutors} 
         onUpdateTutor={handleUpdateTutor}

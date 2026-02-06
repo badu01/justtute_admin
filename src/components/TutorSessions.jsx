@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import LoadingPage from './LoadingPage';
+
 
 const TutorSessions = ({ tutorId }) => {
   const [sessions, setSessions] = useState([]);
@@ -219,17 +221,12 @@ const TutorSessions = ({ tutorId }) => {
 
   if (loading) {
     return (
-      <div className="bg-white rounded-xl border border-gray-200 p-8">
-        <div className="flex items-center justify-center">
-          <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-blue-600"></div>
-          <span className="ml-3 text-gray-600">Loading sessions...</span>
-        </div>
-      </div>
+      <LoadingPage />
     );
   }
 
   return (
-    <div className="bg-white rounded-xl border border-gray-200">
+    <div className="bg-white border border-gray-200">
       {/* Header with Stats */}
       <div className="p-6 border-b border-gray-200">
         <div className="flex justify-between items-center">
@@ -245,7 +242,7 @@ const TutorSessions = ({ tutorId }) => {
       </div>
 
       {/* Filters */}
-      <div className="p-6 border-b border-gray-200 bg-gray-50">
+      <div className="py-4 px-6 border-b border-gray-200 bg-gray-50 sticky top-16">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div className="flex flex-wrap gap-3">
             <select

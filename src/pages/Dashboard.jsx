@@ -88,8 +88,8 @@ const Dashboard = () => {
     <div className="p-6">
       <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
         <div>
-          <h2 className="text-3xl font-extrabold text-gray-900 tracking-tight">Dashboard Overview</h2>
-          <p className="text-gray-500 mt-1 font-medium">Monitoring platform activity and assignment health.</p>
+          <h2 className="text-3xl font-semibold text-gray-900 tracking-tight">Dashboard Overview</h2>
+          <p className="text-gray-500 mt-1">Monitoring platform activity and assignment health.</p>
         </div>
         <div className="flex gap-2">
           <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-indigo-50 text-indigo-700 border border-indigo-100">

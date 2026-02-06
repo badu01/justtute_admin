@@ -67,17 +67,17 @@ const RevenueManagement = () => {
   return (
     <div className="bg-white rounded-xl shadow-lg overflow-hidden">
       {/* Header */}
-      <div className="bg-gradient-to-r from-purple-600 to-pink-600 p-6">
+      <div className=" p-6">
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div>
-            <h2 className="text-2xl font-bold text-white">Revenue Management</h2>
-            <p className="text-purple-100">Financial analytics and transaction history</p>
+            <h2 className="text-2xl font-bold ">Revenue Management</h2>
+            <p className="t-purple-100">Financial analytics and transaction history</p>
           </div>
           <div className="mt-4 md:mt-0 flex space-x-4">
             <select
               value={timeRange}
               onChange={(e) => setTimeRange(e.target.value)}
-              className="px-4 py-2 rounded-lg bg-white bg-opacity-20 text-white border border-purple-300 focus:outline-none focus:ring-2 focus:ring-white"
+              className="px-4 py-2 rounded-lg bg-white bg-opacity-20  border border-purple-300 focus:outline-none focus:ring-2 focus:ring-white"
             >
               <option value="monthly">Monthly</option>
               <option value="quarterly">Quarterly</option>
@@ -86,7 +86,7 @@ const RevenueManagement = () => {
             <select
               value={selectedYear}
               onChange={(e) => setSelectedYear(e.target.value)}
-              className="px-4 py-2 rounded-lg bg-white bg-opacity-20 text-white border border-purple-300 focus:outline-none focus:ring-2 focus:ring-white"
+              className="px-4 py-2 rounded-lg bg-white bg-opacity-20  border border-purple-300 focus:outline-none focus:ring-2 focus:ring-white"
             >
               <option value="2024">2024</option>
               <option value="2023">2023</option>
@@ -102,7 +102,7 @@ const RevenueManagement = () => {
       <div className="p-6">
         {/* Stats Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-          <div className="bg-gradient-to-br from-green-50 to-green-100 border border-green-200 rounded-xl p-5">
+          <div className="bg-linear-to-br from-green-50 to-green-100 border border-green-200 rounded-xl p-5">
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm font-medium text-green-800">Total Revenue</p>
@@ -121,7 +121,7 @@ const RevenueManagement = () => {
             </div>
           </div>
 
-          <div className="bg-gradient-to-br from-blue-50 to-blue-100 border border-blue-200 rounded-xl p-5">
+          <div className="bg-linear-to-br from-blue-50 to-blue-100 border border-blue-200 rounded-xl p-5">
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm font-medium text-blue-800">Net Profit</p>
@@ -140,7 +140,7 @@ const RevenueManagement = () => {
             </div>
           </div>
 
-          <div className="bg-gradient-to-br from-purple-50 to-purple-100 border border-purple-200 rounded-xl p-5">
+          <div className="bg-linear-to-br from-purple-50 to-purple-100 border border-purple-200 rounded-xl p-5">
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm font-medium text-purple-800">Active Students</p>
@@ -157,7 +157,7 @@ const RevenueManagement = () => {
             </div>
           </div>
 
-          <div className="bg-gradient-to-br from-pink-50 to-pink-100 border border-pink-200 rounded-xl p-5">
+          <div className="bg-linear-to-br from-pink-50 to-pink-100 border border-pink-200 rounded-xl p-5">
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm font-medium text-pink-800">Total Classes</p>

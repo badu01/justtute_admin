@@ -282,7 +282,7 @@ const Reports = () => {
   return (
     <div className="bg-white rounded-xl shadow-lg overflow-hidden">
       {/* Header */}
-      <div className="bg-gradient-to-r from-indigo-600 to-blue-600 p-6">
+      <div className="bg-linear-to-r from-indigo-600 to-blue-600 p-6">
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div>
             <h2 className="text-2xl font-bold text-white">Reports & Analytics</h2>
