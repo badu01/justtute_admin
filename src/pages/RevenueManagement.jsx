@@ -3,8 +3,12 @@ import {
   LineChart, Line, BarChart, Bar, PieChart, Pie, Cell,
   XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer
 } from 'recharts';
+import {
+  payments,
+  monthlyReports
+} from '../data/dummyData';
 
-const RevenueManagement = ({ payments, monthlyReports }) => {
+const RevenueManagement = () => {
   const [timeRange, setTimeRange] = useState('monthly');
   const [selectedYear, setSelectedYear] = useState('2024');
 

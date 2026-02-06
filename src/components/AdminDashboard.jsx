@@ -3,8 +3,8 @@ import StudentList from './StudentList';
 import TutorAssignmentModal from './TutorAssignmentModal';
 import TutorManagement from './TutorManagement';
 import PaymentManagement from './PaymentManagement';
-import RevenueManagement from './RevenueManagement';
-import Reports from './Reports';
+import RevenueManagement from '../pages/RevenueManagement';
+import Reports from '../pages/Reports';
 import axios from 'axios';
 import {
   students as initialStudents,
@@ -244,11 +244,6 @@ const AdminDashboard = () => {
 
     }
   };
-
-
-
-
-
   const handleAssignClick = (student) => {
     setSelectedStudent(student);
     setIsModalOpen(true);
@@ -389,7 +384,7 @@ const AdminDashboard = () => {
               </div>
 
               <div className="flex items-center gap-4">
-                <div className="h-8 w-[1px] bg-gray-200 mx-2" /> {/* Divider */}
+                <div className="h-8 w-px bg-gray-200 mx-2" /> {/* Divider */}
                 <div className="flex items-center gap-3">
                   <div className="text-right hidden sm:block">
                     <p className="text-sm font-semibold text-gray-900 leading-none">Admin User</p>

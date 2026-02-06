@@ -4,8 +4,14 @@ import {
   BarChart, Bar, LineChart, Line, PieChart, Pie, Cell,
   XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer
 } from 'recharts';
+import {
+  students ,
+  tutors ,
+  classSessions,
+  monthlyReports 
+} from '../data/dummyData';
 
-const Reports = ({ monthlyReports, students, tutors, classSessions, payments }) => {
+const Reports = () => {
   const [selectedMonth, setSelectedMonth] = useState(monthlyReports[0].month);
   const [reportType, setReportType] = useState('financial');
 
